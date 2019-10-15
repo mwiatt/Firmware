@@ -647,6 +647,8 @@ void VotedSensorsUpdate::accelPoll(struct sensor_combined_s &raw)
 			_last_sensor_data[uorb_index].accelerometer_m_s2[0] = accel_data(0);
 			_last_sensor_data[uorb_index].accelerometer_m_s2[1] = accel_data(1);
 			_last_sensor_data[uorb_index].accelerometer_m_s2[2] = accel_data(2);
+			_last_sensor_data[uorb_index].accelerometer_integral_samples = accel_report.integral_samples;
+			_last_sensor_data[uorb_index].accelerometer_clip_count = accel_report.integral_clip_count;
 
 			_last_accel_timestamp[uorb_index] = accel_report.timestamp;
 			_accel.voter.put(uorb_index, accel_report.timestamp, _last_sensor_data[uorb_index].accelerometer_m_s2,
